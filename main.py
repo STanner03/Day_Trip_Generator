@@ -18,44 +18,33 @@ def print_results():
     print('Transportation: ' + print_list[2])
     print('Entertainment: ' + print_list[3])
 
+def unsatisfied_selection(list, list_position, list_index):
+        list.remove(list_position)
+        print_list[list_index] = random_selector(list)
+        print_results()
+        check_satisfaction()
+
 def check_satisfaction():
-    answer = input("Are you satisfied with your trip results? ")
-    while answer == 'no' or answer == 'No':
-        change = input("What would you like to change; Destination, Restaurant, Transportation, or Entertainment? ")
-        if change == 'Destination' or change == 'destination':
-            destinations.remove(print_list[0])
-            destination = random_selector(destinations)
-            print_list[0] = destination
-            print_results()
-            check_satisfaction()
+    answer = input("Are you satisfied with your trip results? Yes or No ")
+    while answer == 'no' or answer == 'No' or answer == 'N' or answer == 'n':
+        change = input("What would you like to change; A: Destination, B: Restaurant, C: Transportation, or D: Entertainment? ")
+        if change == 'Destination' or change == 'destination' or change == 'A' or change == 'a':
+            unsatisfied_selection(destinations, print_list[0], 0)
             return print_list
         
-        elif change == 'Restaurant' or change == 'restaurant':
-            restaurants.remove(print_list[1])
-            restaurant = random_selector(restaurants)
-            print_list[1] = restaurant
-            print_results()
-            check_satisfaction()
+        elif change == 'Restaurant' or change == 'restaurant' or change == 'B' or change == 'b':
+            unsatisfied_selection(restaurants, print_list[1], 1)
             return print_list
 
-        elif change == 'Transportation' or change == 'transportation':
-            modes_of_transportation.remove(print_list[2])
-            transportation = random_selector(modes_of_transportation)
-            print_list[2] = transportation
-            print(print_list)
-            check_satisfaction()
+        elif change == 'Transportation' or change == 'transportation' or change == 'C' or change == 'c':
+            unsatisfied_selection(modes_of_transportation, print_list[2], 2)
             return print_list
 
-        elif change == 'Entertainment' or change == 'entertainment':
-            forms_of_entertainment.remove(print_list[3])
-            entertainment = random_selector(forms_of_entertainment)
-            print_list[3] = entertainment
-            print(print_list)
-            check_satisfaction()
+        elif change == 'Entertainment' or change == 'entertainment' or change == 'D' or change == 'd':
+            unsatisfied_selection(forms_of_entertainment, print_list[3], 3)
             return print_list
-    while answer == 'yes' or answer == 'Yes':
-        print_results()
-        print(f"You will be traveling to {print_list[0]} by {print_list[2]}, where you will be eating {print_list[1]} and going {print_list[3]} on your Day Trip! I hope you have a great time!")
+    while answer == 'yes' or answer == 'Yes' or answer == 'Y' or answer == 'y':
+        print(f"You will be traveling to {print_list[0]} by {print_list[2]}, where you will be eating at a {print_list[1]} and going {print_list[3]} on your Day Trip! I hope you have a great time!")
         return print_list
     else:
         answer = input('That is not a valad answer. Please provide a Yes or No answer. ')
