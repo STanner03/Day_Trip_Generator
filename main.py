@@ -20,9 +20,9 @@ def check_satisfaction():
     while answer == 'no' or answer == 'No':
         change = input("What would you like to change; Destination, Restaurant, Transportation, or Entertainment? ")
         if change == 'Destination' or change == 'destination':
-            destinations.remove(print_list[1])
+            destinations.remove(print_list[0])
             destination = random_selector(destinations)
-            print_list[1] = destination
+            print_list[0] = destination
             print(print_list)
             check_satisfaction()
             return print_list
@@ -67,18 +67,18 @@ def check_satisfaction():
 def day_trip_generator():
 
     destination = random_selector(destinations)
-    print('destination: ' + destination)
+    print('Destination: ' + destination)
     restaurant = random_selector(restaurants)
-    print('restaurant: ' + restaurant)
+    print('Restaurant: ' + restaurant)
     transportation = random_selector(modes_of_transportation)
-    print('transportation: ' + transportation)
+    print('Transportation: ' + transportation)
     entertainment = random_selector(forms_of_entertainment)
-    print('entertainment: ' + entertainment)
-    return ['Destination: ' + destination, 'Restaurant: ' + restaurant, 'Transportation: ' + transportation, 'Entertainment: ' + entertainment]
-
+    print('Entertainment: ' + entertainment)
+    # return ['Destination: ' + destination, 'Restaurant: ' + restaurant, 'Transportation: ' + transportation, 'Entertainment: ' + entertainment]
+    return [destination, restaurant, transportation, entertainment]
 
 print_list = day_trip_generator()
 # print(print_list)
 check_satisfaction()
 # print_results()
-# check_satisfaction()
+check_satisfaction()
