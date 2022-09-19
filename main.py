@@ -13,7 +13,10 @@ def random_selector(list_to_select_from):
     return selection
 
 def print_results():
-    print(print_list)
+    print('Destination: ' + print_list[0])
+    print('Restaurant: ' + print_list[1])
+    print('Transportation: ' + print_list[2])
+    print('Entertainment: ' + print_list[3])
 
 def check_satisfaction():
     answer = input("Are you satisfied with your trip results? ")
@@ -23,7 +26,7 @@ def check_satisfaction():
             destinations.remove(print_list[0])
             destination = random_selector(destinations)
             print_list[0] = destination
-            print(print_list)
+            print_results()
             check_satisfaction()
             return print_list
         
@@ -31,7 +34,7 @@ def check_satisfaction():
             restaurants.remove(print_list[1])
             restaurant = random_selector(restaurants)
             print_list[1] = restaurant
-            print(print_list)
+            print_results()
             check_satisfaction()
             return print_list
 
@@ -51,34 +54,20 @@ def check_satisfaction():
             check_satisfaction()
             return print_list
     while answer == 'yes' or answer == 'Yes':
-        print("Your itenerary for your Day Trip is " + str(print_list))
+        print_results()
+        print(f"You will be traveling to {print_list[0]} by {print_list[2]}, where you will be eating {print_list[1]} and going {print_list[3]} on your Day Trip! I hope you have a great time!")
         return print_list
     else:
         answer = input('That is not a valad answer. Please provide a Yes or No answer. ')
 
-# def negative_satisfaction(answer_to_satisfaction):
-#     if change == 'Destination':
-#             destinations.remove(print_list[0])
-#             destination = random_selector(destinations)
-#             print_list[0] = destination
-#             print(print_list)
-#             return print_list
-
 def day_trip_generator():
 
     destination = random_selector(destinations)
-    print('Destination: ' + destination)
     restaurant = random_selector(restaurants)
-    print('Restaurant: ' + restaurant)
     transportation = random_selector(modes_of_transportation)
-    print('Transportation: ' + transportation)
     entertainment = random_selector(forms_of_entertainment)
-    print('Entertainment: ' + entertainment)
-    # return ['Destination: ' + destination, 'Restaurant: ' + restaurant, 'Transportation: ' + transportation, 'Entertainment: ' + entertainment]
     return [destination, restaurant, transportation, entertainment]
 
 print_list = day_trip_generator()
-# print(print_list)
-check_satisfaction()
-# print_results()
+print_results()
 check_satisfaction()
